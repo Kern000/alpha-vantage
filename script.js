@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     renderNYSETicker2();
     renderNasdaqTicker2();
     fetchDataTesting();
+    renderDataType();
 })
 
 async function fetchNYSEData(){
@@ -59,6 +60,12 @@ function renderNasdaqTicker2(){
 }
 
 function renderDataType(){
-
-
+    for (let dataType of timeSeriesDataType){
+        let dataTypeHTML = document.createElement("option");
+        dataTypeHTML.value = dataType;
+        dataTypeHTML.innerText = dataType;
+        document.querySelector("#data-type-select").appendChild(dataTypeHTML);      
+    }
 }
+
+

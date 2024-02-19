@@ -9,6 +9,8 @@ let tickerSymbol1="A";
 let tickerSymbol2="A";
 let timeSeriesType1="TIME_SERIES_DAILY";
 
+let timeSeriesDataType = ["TIME_SERIES_DAILY","TIME_SERIES_DAILY_ADJUSTED", "TIME_SERIES_WEEKLY", "TIME_SERIES_WEEKLY_ADJUSTED", "TIME_SERIES_MONTHLY", "TIME_SERIES_MONTHLY_ADJUSTED"];
+
 let query1 = `query?function=${timeSeriesType1}&symbol=${tickerSymbol1}&apikey=`
 let query2 = `query?function=${timeSeriesType1}&symbol=${tickerSymbol2}&apikey=`
 
