@@ -1,0 +1,44 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+#banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+#main-division-wrapper{
+    display: flex;
+    justify-content: space-around;
+}
+
+#ticker-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ticker-wrapper2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label{
+    margin-right: 10px;
+}
+
+select{
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 600px){
+    #main-division-wrapper{
+        flex-direction: column;
+    }
+}
