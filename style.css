@@ -29,10 +29,11 @@ body{
     align-items: center;
 }
 
-#chart-main-3{
+#data-choice{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-top:20px;
 }
 
 
@@ -44,16 +45,19 @@ select{
     margin-right: 10px;
 }
 
-#chart-main-3{
-    margin-top:20px;
+#chart-container1{
+    margin-top: 20px;
 }
+
+
+
 
 
 @media screen and (max-width: 680px){
     #main-division-wrapper{
         flex-direction: column;
     }
-    #chart-main-3{
+    #data-choice{
         justify-content: center;
     }
 }

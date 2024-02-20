@@ -3,22 +3,26 @@ let nyse_tickers_data;
 let nasdaq_tickers_data;
 
 document.addEventListener("DOMContentLoaded", async ()=>{
-    await fetchNYSEData();
-    await fetchNasdaqData();
+    await fetchNYSETickerData();
+    await fetchNasdaqTickerData();
     renderNYSETicker();
     renderNasdaqTicker();
     renderNYSETicker2();
     renderNasdaqTicker2();
-    fetchDataTesting();
     renderDataType();
+    await fetchDataTestingDaily();
+    transformData();
+    renderChart(1);
+    renderChart(2);
+
 })
 
-async function fetchNYSEData(){
+async function fetchNYSETickerData(){
     let response = await axios.get("./nyse_ticker.json");
     nyse_tickers_data = response.data;
 }
 
-async function fetchNasdaqData(){
+async function fetchNasdaqTickerData(){
     let response = await axios.get("./nasdaq_ticker.json");
     nasdaq_tickers_data = response.data;
 }
@@ -64,8 +68,37 @@ function renderDataType(){
         let dataTypeHTML = document.createElement("option");
         dataTypeHTML.value = dataType;
         dataTypeHTML.innerText = dataType;
-        document.querySelector("#data-type-select").appendChild(dataTypeHTML);      
+        document.querySelector("#data-type-select").appendChild(dataTypeHTML);
     }
+}
+
+// Event listeners
+
+let chosen1 = document.querySelector("#ticker-option1");
+let chosen2 = document.querySelector("#ticker-option2");
+let chosen3 = document.querySelector("#ticker-option3");
+let chosen4 = document.querySelector("#ticker-option4");
+let chosenDataType = document.querySelector("#data-type-select")
+
+chosen1.addEventListener("change", changeTargetStock1);
+chosen2.addEventListener("change", changeTargetStock1);
+chosen3.addEventListener("change", changeTargetStock2);
+chosen4.addEventListener("change", changeTargetStock2);
+chosenDataType.addEventListener("change", changeDataTargetType);
+
+function changeTargetStock1(event){
+    tickerSymbol1= event.target.value;
+    console.log(tickerSymbol1);
+}
+
+function changeTargetStock2(event){
+    tickerSymbol2= event.target.value;
+    console.log(tickerSymbol2);
+}
+
+function changeDataTargetType(event){
+    timeSeriesType1= event.target.value;
+    console.log(timeSeriesType1);
 }
 
 
