@@ -213,14 +213,29 @@ function transformData1(){
         pricePointTempHolder1.push(fetchedPriceData1[sortedFetchedKeys1[i]]["1. open"]);
         pricePointTempHolder1.push(fetchedPriceData1[sortedFetchedKeys1[i]]["2. high"]);
         pricePointTempHolder1.push(fetchedPriceData1[sortedFetchedKeys1[i]]["3. low"]);
-        pricePointTempHolder1.push(fetchedPriceData1[sortedFetchedKeys1[i]]["4. close"]);
-        volumes1.push(parseInt(fetchedPriceData1[sortedFetchedKeys1[i]]["5. volume"]));
+        if (targetDataType === "TIME_SERIES_WEEKLY_ADJUSTED" || targetDataType ==="TIME_SERIES_MONTHLY_ADJUSTED"){
+          pricePointTempHolder1.push(fetchedPriceData1[sortedFetchedKeys1[i]]["5. adjusted close"]);
+        } else {
+          pricePointTempHolder1.push(fetchedPriceData1[sortedFetchedKeys1[i]]["4. close"]);
+        }
+  
+        if (targetDataType === "TIME_SERIES_WEEKLY_ADJUSTED" || targetDataType ==="TIME_SERIES_MONTHLY_ADJUSTED"){
+          volumes1.push(parseInt(fetchedPriceData1[sortedFetchedKeys1[i]]["6. volume"]));  
+        } else {
+          volumes1.push(parseInt(fetchedPriceData1[sortedFetchedKeys1[i]]["5. volume"]));
+        } 
 
         dataPointTempHolder1.push(pricePointTempHolder1);
         transformedData1.push(dataPointTempHolder1);
         timeStamps1.push(convertedTimeStamp1);
 
-        let volumesTimeSeries1 = [convertedTimeStamp1, parseInt(fetchedPriceData1[sortedFetchedKeys1[i]]["5. volume"])]
+        let volumesTimeSeries1;
+        if (targetDataType === "TIME_SERIES_WEEKLY_ADJUSTED" || targetDataType ==="TIME_SERIES_MONTHLY_ADJUSTED"){
+          volumesTimeSeries1 = [convertedTimeStamp1, parseInt(fetchedPriceData1[sortedFetchedKeys1[i]]["6. volume"])]
+        } else {
+          volumesTimeSeries1 = [convertedTimeStamp1, parseInt(fetchedPriceData1[sortedFetchedKeys1[i]]["5. volume"])]
+        } 
+
         combinedVolumesTimeStamps1.push(volumesTimeSeries1);
     }
 }
@@ -246,17 +261,31 @@ function transformData2(){
       
       pricePointTempHolder2.push(fetchedPriceData2[sortedFetchedKeys2[i]]["1. open"]);
       pricePointTempHolder2.push(fetchedPriceData2[sortedFetchedKeys2[i]]["2. high"]);
-      pricePointTempHolder2.push(fetchedPriceData2[sortedFetchedKeys2[i]]["3. low"]);
-      pricePointTempHolder2.push(fetchedPriceData2[sortedFetchedKeys2[i]]["4. close"]);
-      volumes1.push(parseInt(fetchedPriceData2[sortedFetchedKeys2[i]]["5. volume"]));
+      pricePointTempHolder2.push(fetchedPriceData2[sortedFetchedKeys2[i]]["3. low"]);     
+      if (targetDataType === "TIME_SERIES_WEEKLY_ADJUSTED" || targetDataType ==="TIME_SERIES_MONTHLY_ADJUSTED"){
+        pricePointTempHolder2.push(fetchedPriceData2[sortedFetchedKeys2[i]]["5. adjusted close"]);  
+      } else {
+        pricePointTempHolder2.push(fetchedPriceData2[sortedFetchedKeys2[i]]["4. close"]);
+      }
 
+      if (targetDataType === "TIME_SERIES_WEEKLY_ADJUSTED" || targetDataType ==="TIME_SERIES_MONTHLY_ADJUSTED"){
+        volumes2.push(parseInt(fetchedPriceData2[sortedFetchedKeys2[i]]["6. volume"]));  
+      } else {
+        volumes2.push(parseInt(fetchedPriceData2[sortedFetchedKeys2[i]]["5. volume"]));
+      }
       dataPointTempHolder2.push(pricePointTempHolder2);
       transformedData2.push(dataPointTempHolder2);
       timeStamps2.push(convertedTimeStamp2);
 
-      let volumesTimeSeries2 = [convertedTimeStamp2, parseInt(fetchedPriceData2[sortedFetchedKeys2[i]]["5. volume"])]
-      combinedVolumesTimeStamps2.push(volumesTimeSeries2);
-  }
+      let volumesTimeSeries2;
+      if (targetDataType === "TIME_SERIES_WEEKLY_ADJUSTED" || targetDataType ==="TIME_SERIES_MONTHLY_ADJUSTED"){
+        volumesTimeSeries2 = [convertedTimeStamp2, parseInt(fetchedPriceData2[sortedFetchedKeys2[i]]["6. volume"])]
+      } else {
+        volumesTimeSeries2 = [convertedTimeStamp2, parseInt(fetchedPriceData2[sortedFetchedKeys2[i]]["5. volume"])]
+      } 
+      combinedVolumesTimeStamps2.push(volumesTimeSeries2);  
+    }
+    console.log(transformedData2)
 }
 
 let chart1;
@@ -273,12 +302,21 @@ function updateChart(chartNumber){
       console.log("update chart here 1", transformedData1)
       chart1.updateSeries([{
         "data": transformedData1
-    }])
+      }])
+      chartBar1.updateSeries([{
+        "name":'volume',
+        "data": combinedVolumesTimeStamps1
+      }])
+
   } else if (chartTracking === 2){
     console.log("update chart here 2", transformedData2)
 
     chart2.updateSeries([{
       "data": transformedData2
+    }])
+    chartBar2.updateSeries([{
+      "name":'volume',
+      "data": combinedVolumesTimeStamps2
     }])
   }
 }

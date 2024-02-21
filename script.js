@@ -88,27 +88,27 @@ chosen3.addEventListener("change", changeTargetStock2);
 chosen4.addEventListener("change", changeTargetStock2);
 chosenDataType.addEventListener("change", changeDataTargetType);
 
-function changeTargetStock1(event){
+async function changeTargetStock1(event){
     tickerSymbol1= event.target.value;
     console.log(tickerSymbol1);
-    fetchPriceData1()
+    await fetchPriceData1()
     transformData1();
     updateChart(1)
 }
 
-function changeTargetStock2(event){
+async function changeTargetStock2(event){
     tickerSymbol2= event.target.value;
     console.log(tickerSymbol2);
-    fetchPriceData2()
+    await fetchPriceData2()
     transformData2();
     updateChart(2)
 }
 
-function changeDataTargetType(event){
+async function changeDataTargetType(event){
     targetDataType= event.target.value;
     console.log(targetDataType);
-    fetchPriceData1();
-    fetchPriceData2();
+    await fetchPriceData1();
+    await fetchPriceData2();
     transformData1();
     transformData2();
     updateChart(1)
