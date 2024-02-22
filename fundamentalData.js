@@ -21,6 +21,22 @@ let query5b = `query?function=${queryPairing[2]}&symbol=${tickerSymbol2}&apikey=
 let query6a = `query?function=${queryPairing[3]}&symbol=${tickerSymbol1}&apikey=`
 let query6b = `query?function=${queryPairing[3]}&symbol=${tickerSymbol2}&apikey=`
 
+function updateQUery3aTO6b(){
+
+    query3a = `query?function=${queryPairing[0]}&symbol=${tickerSymbol1}&apikey=`
+    query3b = `query?function=${queryPairing[0]}&symbol=${tickerSymbol2}&apikey=`
+
+    query4a = `query?function=${queryPairing[1]}&symbol=${tickerSymbol1}&apikey=`
+    query4b = `query?function=${queryPairing[1]}&symbol=${tickerSymbol2}&apikey=`
+
+    query5a = `query?function=${queryPairing[2]}&symbol=${tickerSymbol1}&apikey=`
+    query5b = `query?function=${queryPairing[2]}&symbol=${tickerSymbol2}&apikey=`
+
+    query6a = `query?function=${queryPairing[3]}&symbol=${tickerSymbol1}&apikey=`
+    query6b = `query?function=${queryPairing[3]}&symbol=${tickerSymbol2}&apikey=`
+
+}
+
 let overview1;
 let overview2;
 let income1;
@@ -81,9 +97,10 @@ async function fetchBalanceSheet(){
 
 async function fetchUpdatedFundamentals(updateTarget){
     
-    console.log("fetch all fundamentals here")
+    console.log("fetch updated fundamentals here")
 
     let target = updateTarget;
+    console.log(query3a);
 
     if (target === 1){
         let response1 = await axios.get(BASE_URL + query3a + API_KEY);
@@ -283,11 +300,6 @@ function renderFundamentalViews(target, selector, fetchedData){
         dataHTMLContainer1.appendChild(tableDataItem);
     }
 }
-
-function updateFundamentals(){
-
-}
-
 
 
 

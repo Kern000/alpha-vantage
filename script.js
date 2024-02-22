@@ -96,6 +96,7 @@ async function changeTargetStock1(event){
     await fetchPriceData1()
     transformData1();
     updateChart(1)
+    updateQUery3aTO6b();
     await fetchUpdatedFundamentals(1);
     renderFundamentalViews(overviewTarget, overviewBody1, overview1);
     renderFundamentalViews(incomeTarget, incomeBody1, income1["annualReports"][0]);
@@ -110,6 +111,7 @@ async function changeTargetStock2(event){
     await fetchPriceData2()
     transformData2();
     updateChart(2);
+    updateQUery3aTO6b();
     await fetchUpdatedFundamentals(2);
     renderFundamentalViews(overviewTarget, overviewBody2, overview2);
     renderFundamentalViews(incomeTarget, incomeBody2, income2["annualReports"][0]);

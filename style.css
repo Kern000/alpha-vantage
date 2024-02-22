@@ -82,7 +82,7 @@ h3 {
     padding:0px;
 }
 
-@media screen and (max-width: 680px){
+@media screen and (max-width: 991px){
     #main-division-wrapper{
         flex-direction: column;
     }
