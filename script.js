@@ -16,8 +16,10 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     transformData2();
     renderChart(1);
     renderChart(2);
-
+    await fetchAllFundamentals();
+    renderAllFundamentals();
 })
+
 
 async function fetchNYSETickerData(){
     let response = await axios.get("./nyse_ticker.json");
@@ -94,14 +96,25 @@ async function changeTargetStock1(event){
     await fetchPriceData1()
     transformData1();
     updateChart(1)
+    await fetchUpdatedFundamentals(1);
+    renderFundamentalViews(overviewTarget, overviewBody1, overview1);
+    renderFundamentalViews(incomeTarget, incomeBody1, income1["annualReports"][0]);
+    renderFundamentalViews(cashFlowTarget, cashFlowBody1, cashflow1["annualReports"][0]);
+    renderFundamentalViews(balanceSheetTarget, balanceSheetBody1, balanceSheet1["annualReports"][0]);
 }
+
 
 async function changeTargetStock2(event){
     tickerSymbol2= event.target.value;
     console.log(tickerSymbol2);
     await fetchPriceData2()
     transformData2();
-    updateChart(2)
+    updateChart(2);
+    await fetchUpdatedFundamentals(2);
+    renderFundamentalViews(overviewTarget, overviewBody2, overview2);
+    renderFundamentalViews(incomeTarget, incomeBody2, income2["annualReports"][0]);
+    renderFundamentalViews(cashFlowTarget, cashFlowBody2, cashflow2["annualReports"][0]);
+    renderFundamentalViews(balanceSheetTarget, balanceSheetBody2, balanceSheet2["annualReports"][0]);
 }
 
 async function changeDataTargetType(event){

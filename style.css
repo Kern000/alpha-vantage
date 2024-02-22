@@ -62,9 +62,25 @@ select{
     margin-top: 20px;
 }
 
+#fundamentals-1{
+    margin-top: 20px;
+}
 
+#fundamental-row1{
+    justify-content: space-between;
+}
 
+h3 {
+    margin-top:20px;
+}
 
+#coy1-fundamentals{
+    padding:0px;
+}
+
+#coy2-fundamentals{
+    padding:0px;
+}
 
 @media screen and (max-width: 680px){
     #main-division-wrapper{
@@ -73,6 +89,7 @@ select{
     #data-choice{
         justify-content: center;
     }
+    
 }
 
 
