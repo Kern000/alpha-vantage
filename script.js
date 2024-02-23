@@ -102,6 +102,10 @@ async function changeTargetStock1(event){
     renderFundamentalViews(incomeTarget, incomeBody1, income1["annualReports"][0]);
     renderFundamentalViews(cashFlowTarget, cashFlowBody1, cashflow1["annualReports"][0]);
     renderFundamentalViews(balanceSheetTarget, balanceSheetBody1, balanceSheet1["annualReports"][0]);
+
+    document.querySelector("#chart-label-1").innerText = `${tickerSymbol1}`;
+    document.querySelector("#chart-label-2").innerText = `${tickerSymbol2}`;
+
 }
 
 
@@ -117,6 +121,10 @@ async function changeTargetStock2(event){
     renderFundamentalViews(incomeTarget, incomeBody2, income2["annualReports"][0]);
     renderFundamentalViews(cashFlowTarget, cashFlowBody2, cashflow2["annualReports"][0]);
     renderFundamentalViews(balanceSheetTarget, balanceSheetBody2, balanceSheet2["annualReports"][0]);
+
+    document.querySelector("#chart-label-1").innerText = `${tickerSymbol1}`;
+    document.querySelector("#chart-label-2").innerText = `${tickerSymbol2}`;
+
 }
 
 async function changeDataTargetType(event){

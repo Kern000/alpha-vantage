@@ -521,6 +521,9 @@ function renderChart(chartNumber){
       chartBar2 = new ApexCharts(targetBarElement, optionsVolumeBar);
       chartBar2.render();
     }
+    
+    document.querySelector("#chart-label-1").innerText = `${tickerSymbol1}`;
+    document.querySelector("#chart-label-2").innerText = `${tickerSymbol2}`;
   }
 
 

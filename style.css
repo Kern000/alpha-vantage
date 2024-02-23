@@ -69,6 +69,11 @@ select{
     margin-top: 20px;
 }
 
+.symbol-wrapper{
+    display:flex;
+    justify-content: center;
+}
+
 #fundamentals-1{
     margin-top: 20px;
 }
