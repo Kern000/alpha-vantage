@@ -19,6 +19,13 @@ body{
     margin-top:5px;
 }
 
+#sub-header-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
 .design{
     border-radius: 50%;
     margin: 2px;
