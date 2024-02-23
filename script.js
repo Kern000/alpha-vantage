@@ -130,4 +130,55 @@ async function changeDataTargetType(event){
     updateChart(2)    
 }
 
+let coyOverviewH3 = document.querySelectorAll(".coy-stats");
+let incomeH3 = document.querySelectorAll(".income-stats");
+let cashH3 = document.querySelectorAll(".cash-stats");
+let balanceH3 = document.querySelectorAll(".balance-stats");
+
+let coyTable1 = document.querySelector("#coy-table1");
+let coyTable2 = document.querySelector("#coy-table2");
+let incomeTable1 = document.querySelector("#income-table1");
+let incomeTable2 = document.querySelector("#income-table2");
+let cashTable1 = document.querySelector("#cash-table1");
+let cashTable2 = document.querySelector("#cash-table2");
+let balanceTable1 = document.querySelector("#balance-table1");
+let balanceTable2 = document.querySelector("#balance-table2");
+
+let coyToggleStatus = false;
+let incomeToggleStatus = false;
+let cashToggleStatus = false;
+let balanceToggleStatus = false;
+
+for (let i=0; i < coyOverviewH3.length; i++){
+    coyOverviewH3[i].addEventListener("click",function(){
+        coyToggleStatus = !coyToggleStatus;
+        coyTable1.style.display = coyToggleStatus? "table" : "none";        
+        coyTable2.style.display = coyToggleStatus? "table" : "none"; 
+    })
+}
+
+for (let i=0; i < incomeH3.length; i++){
+    incomeH3[i].addEventListener("click",function(){
+        incomeToggleStatus = !incomeToggleStatus;
+        incomeTable1.style.display = incomeToggleStatus? "table" : "none";        
+        incomeTable2.style.display = incomeToggleStatus? "table" : "none"; 
+    })
+}
+
+for (let i=0; i < cashH3.length; i++){
+    cashH3[i].addEventListener("click",function(){
+        cashToggleStatus = !cashToggleStatus;
+        cashTable1.style.display = cashToggleStatus? "table" : "none";        
+        cashTable2.style.display = cashToggleStatus? "table" : "none"; 
+    })
+}
+
+for (let i=0; i < balanceH3.length; i++){
+    balanceH3[i].addEventListener("click",function(){
+        balanceToggleStatus = !balanceToggleStatus;
+        balanceTable1.style.display = balanceToggleStatus? "table" : "none";        
+        balanceTable2.style.display = balanceToggleStatus? "table" : "none"; 
+    })
+}
+
 

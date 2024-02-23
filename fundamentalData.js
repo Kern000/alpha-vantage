@@ -290,9 +290,11 @@ function renderFundamentalViews(target, selector, fetchedData){
 
         const rowData1 = document.createElement("td");
         rowData1.innerHTML = `${item}`
+        rowData1.classList.add("row-data");
 
         const rowData2 = document.createElement("td");
         rowData2.innerHTML = `${fetchedDataSet[item]}`
+        rowData2.classList.add("row-data");
 
         tableDataItem.appendChild(rowData1);
         tableDataItem.appendChild(rowData2);

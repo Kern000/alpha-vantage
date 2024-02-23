@@ -82,6 +82,26 @@ h3 {
     padding:0px;
 }
 
+.row-data:hover{
+    background-color: aqua;
+}
+
+#fundamental-row1 h3{
+    background-color: gainsboro;
+    padding-bottom:5px;
+    padding-left: 5px;
+    border: 1px solid silver;
+}
+
+#fundamental-row1 h3:hover{
+    background-color: lightgoldenrodyellow;
+}
+
+#fundamental-row1 h3:active{
+    background-color: aliceblue;
+}
+
+
 @media screen and (max-width: 991px){
     #main-division-wrapper{
         flex-direction: column;
